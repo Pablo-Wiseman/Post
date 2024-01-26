@@ -1,9 +1,12 @@
 package com.example.post.ui.theme
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,112 +34,98 @@ import com.example.post.R
 @Composable
 fun PostCard(){
 
-    Card(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+    Card(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier
+            .padding(8.dp)
         ) {
+            PostHeader()
+            Spacer(modifier = Modifier.padding(5.dp))
+            TitleText()
+            Spacer(modifier = Modifier.padding(5.dp))
             Image(
                 modifier = Modifier
-                    .size(50.dp)
-                    .clip(CircleShape),
-                painter = painterResource(id = R.drawable.post_icon),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-            ) {
-                Text(text = "запостил")
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "14:00")
-            }
-            Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.points),
-                contentDescription = null
-            )
-
-        }
-        Column(
-            modifier = Modifier
-                .padding(8.dp)
-                .weight(1f)
-        ) {
-            Text(
-                modifier = Modifier
-                    .padding(bottom = 8.dp),
-                text = stringResource(R.string.template_text)
-            )
-            Image(
-                modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .clip(RoundedCornerShape(10.dp)),
                 painter = painterResource(id = R.drawable.main_pic),
                 contentScale = ContentScale.Crop,
                 contentDescription = null
             )
-        }
-        Row(
-            modifier = Modifier
-                .padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row(
-                modifier = Modifier
-                    .weight(1f),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = ImageVector.vectorResource(R.drawable.eye),
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.padding(2.dp))
-                Text(text = "916")
-            }
-            Row {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(R.drawable.arrow),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.padding(2.dp))
-                    Text(text = "7")
-                }
-                Spacer(modifier = Modifier.padding(10.dp))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(R.drawable.comments),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.padding(2.dp))
-                    Text(text = "8")
-                }
-                Spacer(modifier = Modifier.padding(10.dp))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(R.drawable.heart),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.padding(2.dp))
-                    Text(text = "23")
-                }
-            }
+
+            Spacer(modifier = Modifier.padding(5.dp))
+            Footer()
 
         }
+
+    }
+}
+
+
+@Composable
+private fun PostHeader() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            modifier = Modifier
+                .size(50.dp)
+                .clip(CircleShape),
+            painter = painterResource(id = R.drawable.post_icon),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+
+            )
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Column(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+            Text(text = "запостил")
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(text = "14:00")
+        }
+        Icon(
+            imageVector = ImageVector.vectorResource(id = R.drawable.points),
+            contentDescription = null
+        )
+
+    }
+}
+
+@Composable
+private fun TitleText(){
+    Text(text = stringResource(R.string.template_text))
+}
+
+@Composable
+private fun Footer(){
+    Row {
+        Row(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            IconWithText(icon = R.drawable.eye, text = "966")
+        }
+        Row(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            IconWithText(icon = R.drawable.arrow, text = "7")
+            IconWithText(icon = R.drawable.comments, text = "8")
+            IconWithText(icon = R.drawable.heart, text = "27")
+        }
+    }
+}
+
+@Composable
+private fun IconWithText(icon: Int, text: String){
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(painter = painterResource(id = icon), contentDescription = null)
+        Spacer(modifier = Modifier.padding(4.dp))
+        Text(text = text)
     }
 }
