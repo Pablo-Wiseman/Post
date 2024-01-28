@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.post.ui.theme.MainScreen
 import com.example.post.ui.theme.PostCard
 import com.example.post.ui.theme.PostTheme
 
@@ -22,10 +23,10 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier.fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)
-                        .padding(8.dp)
+//                        .padding(8.dp)
 
                 ) {
-                    PostCard()
+                    MainScreen()
                 }
             }
         }

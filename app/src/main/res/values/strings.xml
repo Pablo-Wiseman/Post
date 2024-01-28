@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Post</string>
     <string name="template_text">И так, давайте начнем с того, что должен знать и уметь человек, чтобы стать Android разработчиком?</string>
+    <string name="navigation_item_main">Главная</string>
+    <string name="navigation_item_favorite">Избранное</string>
+    <string name="navigation_item_profile">Профиль</string>
 </resources>
